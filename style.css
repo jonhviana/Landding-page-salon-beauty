@@ -1,0 +1,208 @@
+/*================== RESEST CSS ===========*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* box-sizing: border-box  - (Faz tamanho do box ser contado a partir da borda, considerando o padding */
+}
+
+a{
+    text-decoration: none;
+    /* Tudo que for link, ele irá tirar a decoração sublinhado*/
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+/*================== Variables ===========*/
+:root{
+    /*16px*/
+    /*root representa a raiz do doc, ou seja, o HTML. Que inclusive é 16px por definição do user agent*/
+
+    --header-height: 4.5rem;
+    /*cabeçalho-altura*/
+
+    --hue:159;
+    /*Apenas hsl*/
+    --base-color: hsl(var(--hue) 36% 57%);
+    --base-color-second: hsl(var(--hue) 65% 88%);
+    --base-color-alt: hsl(var(--hue) 57% 53%);
+    --title-color: hsl(var(--hue) 41% 10%);
+    --text-color: hsl(0 0% 46%);
+    --text-color-light: hsla(0, 0%, 98%);
+    --body-color: hsl(0 0% 98%);
+    
+    /* Com (--color) eu declaro a variável e posso usá-la em qualquer parte do doc, chamando através de [color:var(--color)]    */
+
+}
+/*================== BASE ===========*/
+body{
+    font: 400 1rem "DM Sans", sans-serif;
+    /*  weight 400; size 1rem = (16px do root dividido por 16px da font;*/
+    color: var(--text-color);
+    background: var(--body-color);
+    /*A estilização está sendo referenciada a partir da variavel dentro da raiz*/
+    -webkit-font-smoothing: antialiased;
+    /*Deixa a fonte mais suave*/
+}
+
+h1{
+    font: 700 1.875rem "Poppins", sans-serif ;
+    color: var(--title-color);
+    -webkit-font-smoothing: auto;
+}
+
+.button{
+    background: var(--base-color);
+    color: var(--text-color-light);
+    height: 3.5rem;
+    display: inline-flex;
+    /*O button é uma class da tag a, que por padrão possui display inline, ou seja, a caixa é do tamanho do conteúdo, por isso, é necessário mudar o display para que as configurações sejam alteradas*/
+    align-items: center;
+    padding: 0.875rem 2rem;
+    border-radius: 0.25rem;
+    font: 500 1rem "DM sans", sans-serif;
+  
+}
+
+/*Mudar a cor quando passar o mouse*/
+.button:hover{
+    background: var(--base-color-alt);
+ 
+}
+.divider1{
+    background: linear-gradient(
+        270deg,
+        hsla(var(--hue), 36%, 57%, 1) 0%,
+        hsla(var(--hue), 65%, 88%, 0.34) 100%) ;
+
+    height: 0.0625rem;
+
+}
+
+/*================== LAYOUT ===========*/
+header{
+    border-bottom: 0.0625rem solid ;
+    border-color: hsla(0, 0%, 89%, 1);
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background-color:var(--body-color);
+    top: 0;
+}
+
+main{
+    margin-top: var(--header-height);
+    
+}
+
+
+nav{
+    height: var(--header-height);
+    /*A altura da caixa deverá ser de 72px, no entanto para que seja responsivo, a altura do header deverá estar relacionada com o root que por definição é 16px, logo 72/16 = 4.5rem */
+
+    display: flex;
+
+    justify-content: space-between;
+    /*Justifica cada elemento filho para cada lado do container */
+
+    align-items:center;
+    /*alinhamento de itens: centralizados*/
+}
+
+.container{
+    width: 100%;
+    margin-left: 1.5rem ;
+    margin-right: 1.5rem;
+    
+   
+}
+
+.logo{
+    font: 700 1.3125rem "Poppins", Sans-serif;
+    color: var(--title-color);
+
+}
+
+.logo span{
+    color: var(--base-color);
+}
+
+.grid{
+    display: grid;
+    /*grid habilita novas funcionalidades*/
+    gap: 2rem;
+    /*Coloca um gap de 2rem entre os elementos filhos que são .image e o .text*/
+}
+
+.section{
+    padding: 5rem 0;
+    /*Preenchimento de 5rem top e bottom, e 0 nas laterais*/
+}
+
+/*================== HOME ===========*/
+
+/*diminui barra rolagem lateral (tamanho da caixa home)*/
+#home{
+    overflow: hidden ;
+}
+
+#home .container{
+    margin: 0;
+    /*Definiu margem zero para o conteiner que é pai da caixa img e caixa text*/  
+}    
+
+#home .text{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    /*Com o intuito de deixar apenas a imagem com margem zero, foi definido para apenas o filho .text as configurações de margens laterais*/
+    text-align: center;
+}
+
+#home .text h1 {
+    
+    margin-bottom: 2rem;
+   
+    
+}
+
+#home .text .descrition {
+    margin-bottom: 1rem;
+    max-width: 100%;
+    
+}
+
+#home .text button {
+    margin-top: 1rem;
+}
+
+
+
+#home .container .boxGreenImage .image img{
+    position: relative;
+    right: 2.9425rem ;
+    border-radius: 1.5rem;
+}
+
+
+.boxGreen{
+    position: absolute;
+    background: var(--base-color-second);
+    width: 100%;
+    height: 100%;
+    left: 16.8%  ;
+    z-index: -1;
+    top: -16.8%;
+    border-radius: 1.5rem; 
+}
+
+.boxGreenImage{
+    position: relative;
+    /*Para que a caixa verde (filha) não seja absoluta em relação a página toda, é necessário aplicar relative para a caixa pai*/
+    
+}
+
